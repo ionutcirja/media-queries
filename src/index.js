@@ -12,9 +12,9 @@ const removeBreakPointListener = (bp, cb) => {
     }
 };
 
-export const init = (breakpoints) => {
-    Object.keys(breakpoints).forEach((key) => {
-        mqList[key] = window.matchMedia(`(min-width: ${breakpoints[key]})`);
+export const init = (bps) => {
+    Object.keys(bps).forEach((key) => {
+        mqList[key] = window.matchMedia(`(min-width: ${bps[key]})`);
     });
 };
 
