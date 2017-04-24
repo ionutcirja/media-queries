@@ -45,11 +45,11 @@ describe('Media queries', () => {
         expect(window.matchMedia.args[2][0]).to.equal('(min-width: 1024px)');
     });
 
-    it('should return true if media query matches when mqMatches is invoked', () => {
-        expect(mq.matches('small')).to.equal(true);
-        expect(mq.matches('medium')).to.equal(false);
-        expect(mq.matches('large')).to.equal(false);
-        expect(mq.matches('undefined')).to.equal(false);
+    it('should return true if media query matches breakpoint when matchesBP is invoked', () => {
+        expect(mq.matchesBP('small')).to.equal(true);
+        expect(mq.matchesBP('medium')).to.equal(false);
+        expect(mq.matchesBP('large')).to.equal(false);
+        expect(mq.matchesBP('undefined')).to.equal(false);
     });
 
     it('should add a listener for a media query when ' +

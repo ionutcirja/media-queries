@@ -1,50 +1,50 @@
-const mqList = {};
+const mqs = {};
 
 const addBPListener = (bp, cb) => {
-    if (mqList[bp]) {
-        mqList[bp].addListener(cb);
+    if (mqs[bp]) {
+	    mqs[bp].addListener(cb);
     }
 };
 
 const removeBPListener = (bp, cb) => {
-    if (mqList[bp]) {
-        mqList[bp].removeListener(cb);
+    if (mqs[bp]) {
+	    mqs[bp].removeListener(cb);
     }
 };
 
 export const init = (bps) => {
     Object.keys(bps).forEach((key) => {
-        mqList[key] = window.matchMedia(`(min-width: ${bps[key]})`);
+	    mqs[key] = window.matchMedia(`(min-width: ${bps[key]})`);
     });
 };
 
-export const addMQListener = (bpList, cb) => {
-    if (Array.isArray(bpList)) {
-        bpList.forEach((bp) => {
+export const addMQListener = (bps, cb) => {
+    if (Array.isArray(bps)) {
+        bps.forEach((bp) => {
 	        addBPListener(bp, cb);
         });
     } else {
-	    addBPListener(bpList, cb);
+	    addBPListener(bps, cb);
     }
 };
 
-export const removeMQListener = (bpList, cb) => {
-    if (Array.isArray(bpList)) {
-        bpList.forEach((bp) => {
+export const removeMQListener = (bps, cb) => {
+    if (Array.isArray(bps)) {
+        bps.forEach((bp) => {
 	        removeBPListener(bp, cb);
         });
     } else {
-	    removeBPListener(bpList, cb);
+	    removeBPListener(bps, cb);
     }
 };
 
-export const matches = (bp) => {
-    return !!mqList[bp] && mqList[bp].matches;
+export const matchesBP = (bp) => {
+    return !!mqs[bp] && mqs[bp].matches;
 };
 
 export default {
 	init,
 	addMQListener,
 	removeMQListener,
-	matches
+	matchesBP
 };
