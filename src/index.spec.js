@@ -38,7 +38,7 @@ describe('Media queries', () => {
         sandbox.restore();
     });
 
-    it('should initialise the media queries list when initMediaQueries is invoked', () => {
+    it('should initialise the media queries list list when init method is called', () => {
         expect(window.matchMedia.callCount).to.equal(3);
         expect(window.matchMedia.args[0][0]).to.equal('(min-width: 480px)');
         expect(window.matchMedia.args[1][0]).to.equal('(min-width: 768px)');
