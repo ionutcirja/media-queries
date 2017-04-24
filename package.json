@@ -1,0 +1,55 @@
+{
+  "name": "media-queries",
+  "version": "0.0.1",
+  "author": "Ionut Cirja",
+  "url": "https://github.com/ionutcirja/media-queries",
+  "license": "MIT",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/ionutcirja/media-queries"
+  },
+  "scripts": {
+    "build": "babel -d lib/ src/ --ignore *.spec.js",
+    "lint": "eslint index.js",
+    "test": "NODE_ENV=test ./node_modules/.bin/nyc ./node_modules/.bin/_mocha './{,!(node_modules)/**/}*.spec.js'",
+    "prepublish": "npm run lint && npm test && npm run build"
+  },
+  "main": "lib/index.js",
+  "nyc": {
+    "exclude": [
+      "*.spec.js", "./node_modules"
+    ],
+    "require": ["babel-register"],
+    "sourceMap": false,
+    "instrument": false
+  },
+  "pre-commit": [
+    "lint", "test"
+  ],
+  "dependencies": {
+    "babel-core": "~6.24.1",
+    "babel-register": "~6.24.1",
+    "babel-loader": "~6.4.1",
+    "babel-preset-es2015": "~6.24.1",
+    "babel-polyfill": "~6.23.0",
+    "babel-preset-stage-2": "~6.24.1"
+  },
+  "devDependencies": {
+    "babel-cli": "~6.24.1",
+    "babel-eslint": "~7.2.2",
+    "babel-plugin-istanbul": "~4.1.1",
+    "eslint": "~3.19.0",
+    "eslint-loader": "~1.7.1",
+    "eslint-config-airbnb": "~14.1.0",
+    "eslint-plugin-import": "~2.2.0",
+    "eslint-plugin-jsx-a11y": "~4.0.0",
+    "eslint-plugin-react": "~6.10.3",
+    "mocha": "~3.2.0",
+    "chai": "~3.5.0",
+    "nyc": "~10.1.2",
+    "pre-commit": "~1.2.2",
+    "sinon": "~2.1.0",
+    "sinon-chai": "~2.8.0",
+    "jsdom": "~9.12.0"
+  }
+}

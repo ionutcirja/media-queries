@@ -1,0 +1,21 @@
+{
+  "parser": "babel-eslint",
+  "extends": "airbnb",
+  "globals": {
+    "window": true,
+    "document": true,
+    "describe":true,
+    "it":true,
+    "beforeEach":true,
+    "afterEach":true
+  },
+  "rules": {
+    "linebreak-style": [0],
+    "arrow-body-style": [0],
+    "import/prefer-default-export":[0],
+    "indent": [0],
+    "max-len":[2, 120],
+    "no-restricted-syntax": [2, 'DebuggerStatement'],
+    "no-underscore-dangle": [0]
+  }
+}
