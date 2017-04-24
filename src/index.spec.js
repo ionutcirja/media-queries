@@ -1,7 +1,7 @@
 import chai, { expect } from 'chai';
 import sinon from 'sinon';
 import sinonChai from 'sinon-chai';
-import * as mq from './';
+import mq from './';
 
 chai.use(sinonChai);
 
@@ -46,10 +46,10 @@ describe('Media queries', () => {
     });
 
     it('should return true if media query matches when mqMatches is invoked', () => {
-        expect(mq.mqMatches('small')).to.equal(true);
-        expect(mq.mqMatches('medium')).to.equal(false);
-        expect(mq.mqMatches('large')).to.equal(false);
-        expect(mq.mqMatches('undefined')).to.equal(false);
+        expect(mq.matches('small')).to.equal(true);
+        expect(mq.matches('medium')).to.equal(false);
+        expect(mq.matches('large')).to.equal(false);
+        expect(mq.matches('undefined')).to.equal(false);
     });
 
     it('should add a listener for a media query when ' +

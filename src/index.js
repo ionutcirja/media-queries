@@ -1,12 +1,12 @@
 const mqList = {};
 
-const addBreakPointListener = (bp, cb) => {
+const addBPListener = (bp, cb) => {
     if (mqList[bp]) {
         mqList[bp].addListener(cb);
     }
 };
 
-const removeBreakPointListener = (bp, cb) => {
+const removeBPListener = (bp, cb) => {
     if (mqList[bp]) {
         mqList[bp].removeListener(cb);
     }
@@ -21,23 +21,30 @@ export const init = (bps) => {
 export const addMQListener = (bpList, cb) => {
     if (Array.isArray(bpList)) {
         bpList.forEach((bp) => {
-            addBreakPointListener(bp, cb);
+	        addBPListener(bp, cb);
         });
     } else {
-        addBreakPointListener(bpList, cb);
+	    addBPListener(bpList, cb);
     }
 };
 
 export const removeMQListener = (bpList, cb) => {
     if (Array.isArray(bpList)) {
         bpList.forEach((bp) => {
-            removeBreakPointListener(bp, cb);
+	        removeBPListener(bp, cb);
         });
     } else {
-        removeBreakPointListener(bpList, cb);
+	    removeBPListener(bpList, cb);
     }
 };
 
-export const mqMatches = (bp) => {
+export const matches = (bp) => {
     return !!mqList[bp] && mqList[bp].matches;
+};
+
+export default {
+	init,
+	addMQListener,
+	removeMQListener,
+	matches
 };
