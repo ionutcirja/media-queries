@@ -30,6 +30,8 @@ describe('Media queries', () => {
         matchMediaStub.withArgs('(min-width: 480px)').returns(Object.assign({}, { matches: true, ...listeners }));
         matchMediaStub.withArgs('(min-width: 768px)').returns(Object.assign({}, { matches: false, ...listeners }));
         matchMediaStub.withArgs('(min-width: 1024px)').returns(Object.assign({}, { matches: false, ...listeners }));
+
+	    mq.init(breakpoints);
     });
 
     afterEach(() => {
@@ -37,7 +39,6 @@ describe('Media queries', () => {
     });
 
     it('should initialise the media queries list when initMediaQueries is invoked', () => {
-        mq.initMediaQueries(breakpoints);
         expect(window.matchMedia.callCount).to.equal(3);
         expect(window.matchMedia.args[0][0]).to.equal('(min-width: 480px)');
         expect(window.matchMedia.args[1][0]).to.equal('(min-width: 768px)');
@@ -45,7 +46,6 @@ describe('Media queries', () => {
     });
 
     it('should return true if media query matches when mqMatches is invoked', () => {
-        mq.initMediaQueries(breakpoints);
         expect(mq.mqMatches('small')).to.equal(true);
         expect(mq.mqMatches('medium')).to.equal(false);
         expect(mq.mqMatches('large')).to.equal(false);
@@ -53,8 +53,7 @@ describe('Media queries', () => {
     });
 
     it('should add a listener for a media query when ' +
-        'addMQListener is called with a single breakpoint if that breakpoint exists', () => {
-        mq.initMediaQueries(breakpoints);
+    'addMQListener is called with a single breakpoint if that breakpoint exists', () => {
         mq.addMQListener('small', callback);
         mq.addMQListener('medium', callback);
         mq.addMQListener('undefined', callback);
@@ -64,8 +63,7 @@ describe('Media queries', () => {
     });
 
     it('should add a listener for a list of media queries when ' +
-        'addMQListener is called with a list of breakpoints if that breakpoints exists', () => {
-        mq.initMediaQueries(breakpoints);
+    'addMQListener is called with a list of breakpoints if that breakpoints exists', () => {
         mq.addMQListener(['small', 'large', 'undefined'], callback);
         expect(addListenerStub.callCount).to.equal(2);
         expect(addListenerStub.args[0][0]).to.equal(callback);
@@ -73,8 +71,7 @@ describe('Media queries', () => {
     });
 
     it('should remove a listener for a media query when ' +
-        'removeMQListener is called with a single breakpoint if that breakpoint exists', () => {
-        mq.initMediaQueries(breakpoints);
+    'removeMQListener is called with a single breakpoint if that breakpoint exists', () => {
         mq.removeMQListener('small', callback);
         mq.removeMQListener('medium', callback);
         mq.removeMQListener('undefined', callback);
@@ -84,8 +81,7 @@ describe('Media queries', () => {
     });
 
     it('should remove a listener for a list of media queries when ' +
-        'removeMQListener is called with a list of breakpoints if that breakpoints exists', () => {
-        mq.initMediaQueries(breakpoints);
+    'removeMQListener is called with a list of breakpoints if that breakpoints exists', () => {
         mq.removeMQListener(['small', 'large', 'undefined'], callback);
         expect(removeListenerStub.callCount).to.equal(2);
         expect(removeListenerStub.args[0][0]).to.equal(callback);
