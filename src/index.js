@@ -2,49 +2,49 @@ const mqs = {};
 
 const addBPListener = (bp, cb) => {
     if (mqs[bp]) {
-	    mqs[bp].addListener(cb);
+        mqs[bp].addListener(cb);
     }
 };
 
 const removeBPListener = (bp, cb) => {
     if (mqs[bp]) {
-	    mqs[bp].removeListener(cb);
+        mqs[bp].removeListener(cb);
     }
 };
 
-export const init = (bps) => {
+const init = (bps) => {
     Object.keys(bps).forEach((key) => {
-	    mqs[key] = window.matchMedia(`(min-width: ${bps[key]})`);
+        mqs[key] = window.matchMedia(`(min-width: ${bps[key]})`);
     });
 };
 
-export const addMQListener = (bps, cb) => {
+const addMQListener = (bps, cb) => {
     if (Array.isArray(bps)) {
         bps.forEach((bp) => {
-	        addBPListener(bp, cb);
+            addBPListener(bp, cb);
         });
     } else {
-	    addBPListener(bps, cb);
+        addBPListener(bps, cb);
     }
 };
 
-export const removeMQListener = (bps, cb) => {
+const removeMQListener = (bps, cb) => {
     if (Array.isArray(bps)) {
         bps.forEach((bp) => {
-	        removeBPListener(bp, cb);
+            removeBPListener(bp, cb);
         });
     } else {
-	    removeBPListener(bps, cb);
+        removeBPListener(bps, cb);
     }
 };
 
-export const matchesBP = (bp) => {
+const matchesBP = (bp) => {
     return !!mqs[bp] && mqs[bp].matches;
 };
 
 export default {
-	init,
-	addMQListener,
-	removeMQListener,
-	matchesBP
+    init,
+    addMQListener,
+    removeMQListener,
+    matchesBP,
 };

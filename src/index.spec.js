@@ -9,7 +9,7 @@ describe('Media queries', () => {
     const breakpoints = {
         small: '480px',
         medium: '768px',
-        large: '1024px'
+        large: '1024px',
     };
     const sandbox = sinon.sandbox.create();
     let matchMediaStub;
@@ -24,14 +24,14 @@ describe('Media queries', () => {
         removeListenerStub = sandbox.spy();
         listeners = {
             addListener: addListenerStub,
-            removeListener: removeListenerStub
+            removeListener: removeListenerStub,
         };
         matchMediaStub = sandbox.stub(window, 'matchMedia');
         matchMediaStub.withArgs('(min-width: 480px)').returns(Object.assign({}, { matches: true, ...listeners }));
         matchMediaStub.withArgs('(min-width: 768px)').returns(Object.assign({}, { matches: false, ...listeners }));
         matchMediaStub.withArgs('(min-width: 1024px)').returns(Object.assign({}, { matches: false, ...listeners }));
 
-	    mq.init(breakpoints);
+        mq.init(breakpoints);
     });
 
     afterEach(() => {
