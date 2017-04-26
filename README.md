@@ -1,6 +1,7 @@
 # Media queries
 
 This is a simple utility to deal with breakpoints in javascript in a mobile first manner.
+
 Any pull request for optimisations and new additions is more than welcome.
 
 # Installing media-queries
@@ -55,6 +56,7 @@ mq.removeMQListener(['small', 'medium'], listener); // list of breakpoints examp
 ### matchesBP
 
 Takes a breakpoint as a parameter.
+
 Returns true/false if current window size matches/doesn't match the breakpoint value.
 
 ```js
