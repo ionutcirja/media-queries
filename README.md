@@ -7,13 +7,13 @@ Any pull request for optimisations and new additions is more than welcome.
 # Installing media-queries
 
 ```
-npm install media-queries
+npm install mobile-first-media-queries
 ```
 
 # Usage
 
 ```js
-import mq from 'media-queries';
+import mq from 'mobile-first-media-queries';
 ```
 
 ## Methods
